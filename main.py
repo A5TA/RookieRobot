@@ -1,10 +1,23 @@
 import gspread
 import time
 import globals
-# from twitter import *
-numberOfComments = 20
-# t = Twitter(
-#     auth=OAuth(globals.token, globals.token_secret, globals.consumer_key, globals.consumer_secret))
+import random
+from twitter import *
+import tweepy
+
+
+numberOfQuotes = 348
+
+# client = tweepy.Client(bearer_token=globals.bearer_token)
+
+# You can provide the consumer key and secret with the access token and access
+# token secret to authenticate as a user
+client = tweepy.Client(
+    consumer_key=globals.consumer_key,
+    consumer_secret=globals.consumer_secret,
+    access_token=globals.token,
+    access_token_secret=globals.token_secret
+)
 
 gc = gspread.service_account('credentials.json') #Paste your credentials in a credentials.json file
 
@@ -23,7 +36,6 @@ quote = [] #Use a list to append quotes to the spreadsheet
 while line != "ENDofFile":
     if line == "\n":
         x = ' '.join(quote)
-        print(x)
         try:
             wks.update(str(column)+(str(row)), [[x]]) 
             time.sleep(1)
@@ -37,3 +49,15 @@ while line != "ENDofFile":
     line = file.readline()
 file.close()
 '''
+
+#Pull a tweet from the spreadsheet
+tweet_quote = wks.acell('A'+str(random.randint(1,348))).value
+print(tweet_quote)
+#Post the tweet with Twitter API
+
+response = client.create_tweet(
+    text=tweet_quote
+)
+
+#Delete the tweet from the spreadsheet
+#wks.delete_rows(4)
