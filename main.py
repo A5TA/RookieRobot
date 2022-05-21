@@ -52,7 +52,7 @@ file.close()
 
 #Pull a tweet from the spreadsheet
 tweet_quote = wks.acell('A'+str(random.randint(1,348))).value
-print(tweet_quote)
+
 #Post the tweet with Twitter API
 
 response = client.create_tweet(
