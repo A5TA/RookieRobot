@@ -12,7 +12,9 @@ Majority of our group were learning Flask, Python, HTML, or CSS. The Twitter API
 Our project was designed using Python, we also built a web page with flask to allow users to interact with Rookie Robot. The web page is hosted on Google Cloud.
 
 ## 😣 CHALLENGES WE RAN INTO😣
-Twitter API, this API was updated recently and existing resources could not be used fully. The documentation was difficult to interpret and implement. 
+Twitter API, this API was updated recently and existing resources could not be used fully. The documentation was difficult to interpret and implement.
+
 GitHub, we are still learning how to use this platform and one of our members had accidentally committed the wrong files causing us to lose some time.
+
 Act of God, one of members had a power outage in his neighboured due to damaged lines from a storm. They could not participate during a large portion of the event.
 
