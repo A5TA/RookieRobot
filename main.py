@@ -1,3 +1,4 @@
+import json
 import gspread
 import time
 import globals
@@ -16,7 +17,8 @@ client = tweepy.Client(
     consumer_key=globals.consumer_key,
     consumer_secret=globals.consumer_secret,
     access_token=globals.token,
-    access_token_secret=globals.token_secret
+    access_token_secret=globals.token_secret,
+    bearer_token=globals.bearer_token
 )
 
 gc = gspread.service_account('credentials.json') #Paste your credentials in a credentials.json file
@@ -55,9 +57,20 @@ tweet_quote = wks.acell('A'+str(random.randint(1,348))).value
 
 #Post the tweet with Twitter API
 
-response = client.create_tweet(
-    text=tweet_quote
-)
+# response = client.create_tweet(
+#     text=tweet_quote
+# )
+
+screen_name = input("Enter username: ").strip() #SEND USER INPUT FROM FLASK SITE TO THIS VARIABLE
+idforuser = str(client.get_users(usernames=[screen_name])) #finds the users id from given @...
+#loop over the data from user to pull only the id from it
+targetID = ""
+for num in range(24, len(idforuser)):
+    if idforuser[num] == " ":
+        break
+    targetID += str(idforuser[num])
+#Submit a follow to the target user using the id from the loop
+client.follow_user(target_user_id=targetID, user_auth=True)
 
 #Delete the tweet from the spreadsheet
 #wks.delete_rows(4)
