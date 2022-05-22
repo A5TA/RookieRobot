@@ -55,12 +55,6 @@ file.close()
 #Pull a tweet from the spreadsheet
 tweet_quote = wks.acell('A'+str(random.randint(1,348))).value
 
-#Post the tweet with Twitter API
-
-# response = client.create_tweet(
-#     text=tweet_quote
-# )
-
 screen_name = input("Enter username: ").strip() #SEND USER INPUT FROM FLASK SITE TO THIS VARIABLE
 idforuser = str(client.get_users(usernames=[screen_name])) #finds the users id from given @...
 #loop over the data from user to pull only the id from it
@@ -72,5 +66,7 @@ for num in range(24, len(idforuser)):
 #Submit a follow to the target user using the id from the loop
 client.follow_user(target_user_id=targetID, user_auth=True)
 
-#Delete the tweet from the spreadsheet
-#wks.delete_rows(4)
+#Post the tweet with Twitter API
+response = client.create_tweet(
+    text='@'+screen_name + ' ' + tweet_quote
+)
