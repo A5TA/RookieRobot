@@ -1,11 +1,12 @@
-import json
 import gspread
 import time
 import globals
 import random
 from twitter import *
 import tweepy
-
+#-----------------------------------------------
+#THIS FILE IS FOR TESTING OUTSIDE OF THE FLASK APPLICATION
+#-----------------------------------------------
 
 numberOfQuotes = 348
 
