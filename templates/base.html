@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>RookieRobot</title>
+    <title>Rookie Robot</title>
+    <img src="https://cdn.discordapp.com/attachments/977228466443386882/977703907952300032/twitterlogo.png" alt="Twitter Logo" height="200px" width="200px">
+    <style>
+        html,body {
+            text-align: center;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+        
+        }
+    </style>
 </head>
 <body>
-    <h1>Use RookieRobot</h1>
+    <h3>Enter a Twitter Use</h3>
     <form method="POST">
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1" name="username">@</span>
             <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
+        <h3>Enter a Message or Leave Blank for Quote</h3>
         <div class="input-group">
             <span class="input-group-text">Message</span>
             <textarea class="form-control" aria-label="Message" name="custom_message"></textarea>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
         {% if message %}
         <p>Note: {{ message }}</p>
