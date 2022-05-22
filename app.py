@@ -46,6 +46,7 @@ def index():
             if len(custom_message) == 0 or len(custom_message) > 260: 
                 custom_message = wks.acell('A'+str(random.randint(1,348))).value #Add message from spreadsheet if not provided
                 rookierobot(username,custom_message)
+                error="Your custom message wasn't the appropriate format, now using: \"" +  custom_message +"\""
             else: 
                 rookierobot(username,custom_message)
             return redirect(url_for('thank_you'))
